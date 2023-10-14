@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Charts EDA</title>
+    <!-- Load the Google Charts library -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    
+        google.charts.load('current', {'packages':['corechart']});
+    
+        // Callback function to draw the bar chart
+        function drawBarChart() {
+            var data = google.visualization.arrayToDataTable([
+                // ... (bar chart data)
+                ['Category', 'Value'],
+                ['Mobile Phones', 1723],
+                ['Laptopts', 786],
+                ['TV', 411],
+                ['Accessories', 2192]
+            ]);
+            var options = {
+                title: 'Electrical Stores in Mall',
+                width: 600,
+                height: 400
+                // ... (bar chart options)
+            };
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    
+        // Callback function to draw the pie chart
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                // ... (pie chart data)
+                ['Category', 'Value'],
+                ['Electrical', 5102],
+                ['Hardware', 4112],
+                ['Clothing', 8921],
+                ['Cosmetics', 3566]
+            ]);
+            var options = {
+                title: 'Total Department in Mall',
+                width: 600,
+                height: 400
+                // ... (pie chart options)
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('pie_div'));
+            chart.draw(data, options);
+        }
+    
+        // Set callbacks when Google Charts library is loaded
+        google.charts.setOnLoadCallback(drawBarChart);
+        google.charts.setOnLoadCallback(drawPieChart);
+    </script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script type="text/javascript">
+        // Your D3.js code here
+        document.addEventListener('DOMContentLoaded', function() {
+            // D3.js code
+            const width = 960;
+            const height = 500;
+            // ... (rest of your D3.js code)
+
+            // Create the SVG chart
+            const svgChart = createD3Chart();
+            document.getElementById("d3_chart_div").appendChild(svgChart);
+        });
+
+        function createD3Chart() {
+            // Your D3.js code here
+            // ... (create D3 chart using D3.js concepts)
+            // Return the SVG element
+            return svg.node();
+        }
+    </script>
+</head>
+<body>
+    <!-- Container for the chart -->
+    <div id="chart_div"></div>
+    <div id="pie_div"></div>
+</body>
+</html>

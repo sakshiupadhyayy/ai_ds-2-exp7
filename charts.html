@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Charts Example</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(function() {
+            // Access the chart data using the data attribute
+            var chartData = JSON.parse(document.getElementById('chart-data').getAttribute('data-chart-data'));
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Category');
+            data.addColumn('number', 'Value');
+            
+            for (var i = 0; i < chartData.length; i++) {
+                data.addRow([chartData[i].category, chartData[i].value]);
+            }
+
+            var options = {
+                chart: {
+                    title: 'Bar Chart Example',
+                    subtitle: 'Subtitle here'
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart-div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        });
+    </script>
+</head>
+<body>
+    <h1>Google Charts Example</h1>
+    <div id="chart-div"></div>
+
+    <!-- Pass chart data as a data attribute -->
+    <div id="chart-data" data-chart-data="{{ chart_data | tojson | safe }}"></div>
+</body>
+</html>
